@@ -26,8 +26,15 @@ jobs:
         run: npm run build
         working-directory: app
 
-      - name: List output
-        run: ls -la app/out/ || echo "out/ not found"
+      - name: Debug - list app directory
+        if: always()
+        run: |
+          echo "=== workspace root ==="
+          ls -la
+          echo "=== app/ contents ==="
+          ls -la app/
+          echo "=== app/out/ contents (if exists) ==="
+          ls -la app/out/ || echo "out/ not found"
 
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4

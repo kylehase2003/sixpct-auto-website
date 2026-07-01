@@ -7,7 +7,7 @@ export default function About() {
         <div className="snapshot-content reveal">
           <p>Six% Auto is built for businesses where execution slows down not because work is hard, but because it
             is fragmented, repetitive, and poorly coordinated.</p>
-          <p>It is not a DIY tool. Setup, integration, optimization, and ongoing refinement — all handled. Full
+          <p>It is not a DIY tool. Setup, integration, optimization, and ongoing refinement, all handled. Full
             visibility. Full control.</p>
         </div>
         <div className="stat-row reveal">

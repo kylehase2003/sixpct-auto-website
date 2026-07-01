@@ -446,7 +446,7 @@ void main() {
       rafId = requestAnimationFrame(render);
     }
 
-    loadTexture('https://x.ai/images/noise.png', true)
+    loadTexture('/images/noise.png', true)
       .then(startRender)
       .catch(() => startRender(makeProceduralNoise()));
 
@@ -479,11 +479,10 @@ void main() {
       <div className="hero-inner">
         <p className="hero-tag">Execution Layer</p>
         <h1>Stop managing work.<br />Start executing it.</h1>
-        <p className="hero-sub">Six% Auto is an AI-powered execution layer that removes the operational friction slowing
-          your business down — without predictions, dashboards, or guesswork.</p>
+        <p className="hero-sub">Six% Auto takes the repetitive work off your plate and runs it automatically. No guesswork. No extra staff.</p>
         <div className="hero-actions">
           <a href="#contact" className="btn-fill">Book a Call</a>
-          <a href="#services" className="btn-ghost">See How It Works</a>
+          <a href="#where-we-come-in" className="btn-ghost">See How It Works</a>
         </div>
       </div>
 

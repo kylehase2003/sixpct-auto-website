@@ -75,10 +75,10 @@ export default function Calculator() {
   return (
     <>
       {/* ═══ MANUAL TAX CALCULATOR SECTION ═══ */}
-      <section id="manual-tax" style={{ background: '#000', color: '#fff', fontFamily: "'Inter', sans-serif", padding: '120px 24px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <section id="manual-tax" style={{ background: '#000', color: '#fff', fontFamily: "'Inter', sans-serif", padding: '80px 24px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <p style={{ color: '#eb4326', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '16px' }}>THE CALCULATOR</p>
-          <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 950, marginBottom: '16px', color: '#fff', letterSpacing: '-0.04em' }}>What is manual work costing you?</h2>
+          <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 950, marginBottom: '16px', color: '#fff', letterSpacing: '-0.04em' }}>What is manual work costing you?</h2>
           <p style={{ color: '#aaa', fontSize: 'clamp(16px, 2vw, 18px)', marginBottom: '80px', fontWeight: 400, opacity: 0.8 }}>Fill in your numbers. See the real cost of legacy operations.</p>
 
           <div className="mt-calc-grid">
@@ -87,49 +87,34 @@ export default function Calculator() {
               <div className="mt-input-group">
                 <label htmlFor="team-size">Team Size</label>
                 <p className="mt-label-desc">How many people handle admin, sales, or operations?</p>
-                <input
-                  type="range"
-                  id="team-size"
-                  min="1"
-                  max="500"
-                  value={teamSize}
-                  step="1"
-                  className="mt-slider"
-                  onChange={e => setTeamSize(parseInt(e.target.value))}
-                />
-                <div className="mt-slider-val"><span id="val-team-size">{teamSize}</span> employees</div>
+                <div className="mt-control" style={{'--value': ((teamSize - 1) / 499 * 100).toFixed(2)} as React.CSSProperties}>
+                  <input type="range" id="team-size" min="1" max="500" value={teamSize} step="1" className="mt-slider" onChange={e => setTeamSize(parseInt(e.target.value))} />
+                  <div className="mt-control__track"><div className="mt-control__indicator"><div className="mt-control__thumb"></div></div></div>
+                  <div className="mt-control__beams"><div className="mt-control__beam-track"></div><div className="mt-control__beam-track"></div></div>
+                </div>
+                <div className="mt-slider-val"><span>{teamSize}</span> employees</div>
               </div>
 
               <div className="mt-input-group">
                 <label htmlFor="salary">Annual Salary</label>
                 <p className="mt-label-desc">Average annual salary per person</p>
-                <input
-                  type="range"
-                  id="salary"
-                  min="20000"
-                  max="200000"
-                  value={salary}
-                  step="1000"
-                  className="mt-slider"
-                  onChange={e => setSalary(parseInt(e.target.value))}
-                />
-                <div className="mt-slider-val">$<span id="val-salary">{salary.toLocaleString()}</span></div>
+                <div className="mt-control" style={{'--value': ((salary - 20000) / 180000 * 100).toFixed(2)} as React.CSSProperties}>
+                  <input type="range" id="salary" min="20000" max="200000" value={salary} step="1000" className="mt-slider" onChange={e => setSalary(parseInt(e.target.value))} />
+                  <div className="mt-control__track"><div className="mt-control__indicator"><div className="mt-control__thumb"></div></div></div>
+                  <div className="mt-control__beams"><div className="mt-control__beam-track"></div><div className="mt-control__beam-track"></div></div>
+                </div>
+                <div className="mt-slider-val">$<span>{salary.toLocaleString()}</span></div>
               </div>
 
               <div className="mt-input-group" style={{ marginBottom: '48px' }}>
                 <label htmlFor="hours">Manual Grind</label>
                 <p className="mt-label-desc">Hours per week each person spends on manual tasks</p>
-                <input
-                  type="range"
-                  id="hours"
-                  min="1"
-                  max="40"
-                  value={hours}
-                  step="1"
-                  className="mt-slider"
-                  onChange={e => setHours(parseInt(e.target.value))}
-                />
-                <div className="mt-slider-val"><span id="val-hours">{hours}</span> hours/week</div>
+                <div className="mt-control" style={{'--value': ((hours - 1) / 39 * 100).toFixed(2)} as React.CSSProperties}>
+                  <input type="range" id="hours" min="1" max="40" value={hours} step="1" className="mt-slider" onChange={e => setHours(parseInt(e.target.value))} />
+                  <div className="mt-control__track"><div className="mt-control__indicator"><div className="mt-control__thumb"></div></div></div>
+                  <div className="mt-control__beams"><div className="mt-control__beam-track"></div><div className="mt-control__beam-track"></div></div>
+                </div>
+                <div className="mt-slider-val"><span>{hours}</span> hours/week</div>
               </div>
 
               <div style={{ textAlign: 'left' }}>
@@ -191,8 +176,8 @@ export default function Calculator() {
               <details className="mt-calc-methodology">
                 <summary>How we calculate this <span className="arrow">→</span></summary>
                 <ul>
-                  <li><strong>Wasted Labor:</strong> Based on the average knowledge worker spending 41% of their workweek on repetitive, low-value tasks — sourced from McKinsey Global Institute research on workplace automation potential.</li>
-                  <li><strong>Error Costs:</strong> Manual data entry carries an average error rate of 1–5% per transaction. We use a conservative 5% of team payroll to estimate the cost of fixing mistakes, lost records, and missed follow-ups — consistent with IBM and Gartner operational cost benchmarks.</li>
+                  <li><strong>Wasted Labor:</strong> Based on the average knowledge worker spending 41% of their workweek on repetitive, low-value tasks, sourced from McKinsey Global Institute research on workplace automation potential.</li>
+                  <li><strong>Error Costs:</strong> Manual data entry carries an average error rate of 1–5% per transaction. We use a conservative 5% of team payroll to estimate the cost of fixing mistakes, lost records, and missed follow-ups, consistent with IBM and Gartner operational cost benchmarks.</li>
                   <li><strong>Missed Revenue:</strong> Research from Harvard Business Review found that companies responding to leads within 1 hour are 7x more likely to convert. We estimate a 20% conversion loss attributable to slow manual response times, multiplied by your average sale value.</li>
                 </ul>
               </details>
@@ -229,6 +214,8 @@ export default function Calculator() {
             max-width: 1100px;
             margin: 0 auto;
         }
+        .mt-inputs { isolation: isolate; }
+        .mt-results { isolation: isolate; }
         .mt-input-group { margin-bottom: 40px; }
         .mt-input-group label {
             display: block;
@@ -246,29 +233,133 @@ export default function Calculator() {
             font-weight: 500;
             opacity: 0.9;
         }
+        .mt-control {
+            position: relative;
+            isolation: isolate;
+            display: grid;
+            place-items: center;
+            border-radius: 100px;
+            width: 100%;
+            height: 40px;
+            margin-bottom: 16px;
+        }
+        .mt-control::before {
+            content: "";
+            inset: -5px;
+            border: 3px solid #000;
+            border-radius: 100px;
+            position: absolute;
+            pointer-events: none;
+        }
         .mt-slider {
             -webkit-appearance: none;
             appearance: none;
             width: 100%;
-            height: 2px;
-            background: rgba(255,255,255,0.15);
-            outline: none;
-            margin-bottom: 16px;
-            border-radius: 2px;
+            height: 40px;
+            opacity: 0;
+            position: relative;
+            z-index: 3;
+            cursor: grab;
+            margin: 0;
+            padding: 0;
+            border: 0;
         }
+        .mt-slider:active { cursor: grabbing; }
         .mt-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #fff;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
-            border: none;
-            transition: transform 0.2s ease;
+            height: 40px;
+            width: 40px;
         }
-        .mt-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.15);
+        .mt-slider::-webkit-slider-runnable-track {
+            -webkit-appearance: none;
+            height: 40px;
+        }
+        .mt-control__track {
+            height: 100%;
+            width: 100%;
+            border-radius: 100px;
+            position: absolute;
+            pointer-events: none;
+            background: hsl(0 0% 8%);
+            box-shadow:
+                0 -2px 10px 0 hsl(0 0% 0% / 0.5) inset,
+                0 2px 10px 0 hsl(0 0% 0% / 0.65) inset,
+                0 -1px inset hsl(0 0% 100% / 0.15),
+                0 0 10px inset black;
+        }
+        .mt-control__indicator {
+            height: 100%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: calc(var(--value, 0) * 1%);
+            z-index: 2;
+            translate: calc(var(--value, 0) * -1%) -50%;
+            display: grid;
+            place-items: center;
+        }
+        .mt-control__thumb {
+            width: calc(100% - 10px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            position: relative;
+        }
+        .mt-control__thumb::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: hsl(0 0% 16%);
+            box-shadow:
+                0 2px 4px 0px inset hsl(0 0% 100% / 0.4),
+                2px 0 6px -2px inset hsl(14 84% 54% / calc(var(--value, 0) / 100)),
+                2px 0 6px -2px inset hsl(14 84% 54% / calc(var(--value, 0) / 100));
+        }
+        .mt-control__thumb::after {
+            content: "";
+            position: absolute;
+            height: 20%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            background: hsl(14 84% 54% / calc(0.4 + (var(--value, 0) / 100) * 0.6));
+            box-shadow: 0 0 calc((var(--value, 0) / 100) * 12px) calc((var(--value, 0) / 100) * 5px) hsl(14 84% 54% / calc(0.4 + (var(--value, 0) / 100) * 0.6));
+        }
+        .mt-control__beams {
+            position: absolute;
+            inset: -5px;
+            pointer-events: none;
+            container-type: size;
+        }
+        .mt-control__beam-track {
+            position: absolute;
+            border-radius: 100px;
+            inset: 0;
+        }
+        .mt-control__beam-track:last-of-type {
+            filter: brightness(1.5) blur(8px);
+        }
+        .mt-control__beam-track::after {
+            content: "";
+            border: 3px solid hsl(14 84% 54% / calc(0.4 + (var(--value, 0) / 100) * 0.6));
+            position: absolute;
+            border-radius: 100px;
+            inset: 0;
+            z-index: 2;
+            clip-path: inset(
+                0
+                calc(
+                    100% -
+                    (50cqh * clamp(0, var(--value, 0), 1)) -
+                    ((100% - 100cqh) * (var(--value, 0) / 100)) -
+                    ((50cqh) * clamp(0, var(--value, 0) - 99, 1))
+                )
+                0
+                0
+            );
         }
         .mt-slider-val {
             font-size: 15px;

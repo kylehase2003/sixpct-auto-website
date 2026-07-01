@@ -23,7 +23,7 @@ export default function WhereWeComeIn() {
 
   return (
     <>
-      <section id="where-we-come-in" style={{ background: '#000', color: '#fff', fontFamily: "'Inter','Helvetica Neue',sans-serif", padding: '160px 24px' }}>
+      <section id="where-we-come-in" style={{ background: '#000', color: '#fff', fontFamily: "'Inter','Helvetica Neue',sans-serif", padding: '80px 24px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontSize: 'clamp(42px, 8vw, 72px)', fontWeight: 950, marginBottom: '16px', color: '#fff', letterSpacing: '-0.03em' }}>HERE&apos;S WHERE WE COME IN.</h2>
           <p style={{ fontSize: 'clamp(16px, 1.8vw, 20px)', color: '#888', fontWeight: 400, maxWidth: '760px', margin: '0 auto 100px', lineHeight: 1.6, opacity: 0.8 }}>
@@ -53,7 +53,7 @@ export default function WhereWeComeIn() {
               </div>
               <div className="wwc-content">
                 <h3 className="wwc-title">We Map Your Friction</h3>
-                <p className="wwc-desc">Every business leaks time and money in different places. We start by identifying exactly where yours does — bookings, admin, follow-ups, and support.</p>
+                <p className="wwc-desc">Every business leaks time and money in different places. We start by identifying exactly where yours does: bookings, admin, follow-ups, and support.</p>
               </div>
             </div>
 
@@ -72,7 +72,7 @@ export default function WhereWeComeIn() {
               </div>
               <div className="wwc-content">
                 <h3 className="wwc-title">We Build Your System</h3>
-                <p className="wwc-desc">We design and deploy a fully integrated AI automation layer custom to your operations. A proprietary system that runs your repetitive work end to end.</p>
+                <p className="wwc-desc">We build a custom system wired into how your business actually runs. It handles the repetitive work from start to finish.</p>
               </div>
             </div>
 
@@ -98,7 +98,7 @@ export default function WhereWeComeIn() {
               </div>
               <div className="wwc-content">
                 <h3 className="wwc-title">We Run It For You</h3>
-                <p className="wwc-desc">This isn&apos;t a DIY tool you hand off. We handle setup, integration, monitoring, and refinement. You get the output without the headcount overhead.</p>
+                <p className="wwc-desc">This isn&apos;t a DIY tool you hand off. We handle setup, integration, monitoring, and refinement. You get the results without hiring anyone to make it happen.</p>
               </div>
             </div>
 

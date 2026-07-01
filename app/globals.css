@@ -51,9 +51,9 @@
             left: 0;
             right: 0;
             z-index: 100;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            justify-content: space-between;
             padding: 0 40px;
             height: 64px;
             background: rgba(0, 0, 0, 0.6);
@@ -80,6 +80,7 @@
             list-style: none;
             position: static;
             transform: none;
+            justify-content: center;
         }
 
         .nav-links a {
@@ -111,6 +112,7 @@
             text-decoration: none;
             letter-spacing: 0.01em;
             transition: opacity 0.2s;
+            justify-self: end;
         }
 
         .nav-cta:hover {
@@ -312,6 +314,27 @@
                 padding: 0 28px;
             }
 
+            .hero::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.35);
+                z-index: 0;
+                pointer-events: none;
+            }
+
+            .hero-inner {
+                z-index: 2;
+            }
+
+            .marquee {
+                z-index: 2;
+            }
+
+            .hero-sub {
+                color: rgba(255, 255, 255, 0.65);
+            }
+
             nav .nav-links {
                 display: none;
             }
@@ -336,7 +359,7 @@
         }
 
         .section-title {
-            font-size: 56px;
+            font-size: clamp(36px, 5vw, 56px);
             font-weight: 900;
             margin-bottom: 80px;
         }
@@ -685,6 +708,7 @@
         /* --- ABOUT SNAPSHOT --- */
         .bg-surface {
             background: var(--surface);
+            padding: 80px 24px;
         }
 
         .snapshot-content {
@@ -724,7 +748,7 @@
         #contact {
             background: #000 !important;
             color: #fff !important;
-            padding: 140px 24px;
+            padding: 80px 24px;
         }
 
         #contact .section-title {
@@ -1905,10 +1929,10 @@
   .p1-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 60px;
+    gap: 24px;
     max-width: 1100px;
-    margin: 120px auto 0;
-    padding-top: 60px;
+    margin: 60px auto 0;
+    padding-top: 32px;
   }
   .p1-stat {
     background: transparent;

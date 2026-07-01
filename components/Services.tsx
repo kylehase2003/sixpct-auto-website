@@ -4,6 +4,19 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function Services() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
+
+  function handleCardClick(index: number) {
+    if (window.innerWidth <= 768) {
+      setFlippedCards(prev => {
+        const next = new Set(prev);
+        next.has(index) ? next.delete(index) : next.add(index);
+        return next;
+      });
+    } else {
+      openModal();
+    }
+  }
 
   const cv1Ref = useRef<HTMLCanvasElement>(null);
   const cv2Ref = useRef<HTMLCanvasElement>(null);
@@ -284,19 +297,19 @@ export default function Services() {
   return (
     <>
       {/* SERVICES v2 — NEW VERSION */}
-      <section id="services-v2" style={{ background: '#000', color: '#fff', fontFamily: "'Inter','Helvetica Neue',sans-serif", padding: '120px 40px' }}>
+      <section id="services-v2" style={{ background: '#000', color: '#fff', fontFamily: "'Inter','Helvetica Neue',sans-serif", padding: '80px 40px' }}>
         <div style={{ maxWidth: '920px', margin: '0 auto' }}>
 
           <div style={{ textAlign: 'center', marginBottom: '80px' }}>
             <p style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#eb4326', margin: '0 0 14px' }}>What we solve</p>
-            <h2 style={{ fontSize: 'clamp(24px,3vw,46px)', fontWeight: 700, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.035em', lineHeight: 1.1 }}>Your business, on autopilot.</h2>
-            <p style={{ fontSize: '13px', color: '#555', maxWidth: '360px', margin: '0 auto', lineHeight: 1.7 }}>Five problems quietly draining your time and revenue — each one automated away.</p>
+            <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.035em', lineHeight: 1.1 }}>Your business, on autopilot.</h2>
+            <p style={{ fontSize: '13px', color: '#555', maxWidth: '360px', margin: '0 auto', lineHeight: 1.7 }}>Five problems quietly draining your time and revenue, each one automated away.</p>
           </div>
 
           <div className="sv2-grid">
 
             {/* 01 */}
-            <div className="sv2-card" onClick={openModal} onKeyDown={(e) => e.key === 'Enter' && openModal()} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
+            <div className={`sv2-card${flippedCards.has(0) ? ' sv2-flipped' : ''}`} onClick={() => handleCardClick(0)} onKeyDown={(e) => e.key === 'Enter' && handleCardClick(0)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
               <div className="sv2-flipper">
                 <div className="sv2-front">
                   <canvas ref={cv1Ref} id="sv2-cv1" style={{ position: 'absolute', top: 0, left: 0 }}></canvas>
@@ -311,7 +324,7 @@ export default function Services() {
                 <div className="sv2-back">
                   <p className="sv2-back-label">&#x2713; Fixed with Six% Auto</p>
                   <h3 className="sv2-back-title">Smart Booking,<br />Zero Leakage</h3>
-                  <p className="sv2-back-desc">Every appointment confirmed, reminded, and followed up automatically — before it becomes a no-show.</p>
+                  <p className="sv2-back-desc">Every appointment confirmed, reminded, and followed up automatically, before it becomes a no-show.</p>
                   <div className="sv2-items">
                     <div className="sv2-item">Automated SMS &amp; email confirmations</div>
                     <div className="sv2-item">No-show alerts sent in real time</div>
@@ -323,7 +336,7 @@ export default function Services() {
             </div>
 
             {/* 02 */}
-            <div className="sv2-card" onClick={openModal} onKeyDown={(e) => e.key === 'Enter' && openModal()} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
+            <div className={`sv2-card${flippedCards.has(1) ? ' sv2-flipped' : ''}`} onClick={() => handleCardClick(1)} onKeyDown={(e) => e.key === 'Enter' && handleCardClick(1)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
               <div className="sv2-flipper">
                 <div className="sv2-front">
                   <canvas ref={cv2Ref} id="sv2-cv2" style={{ position: 'absolute', top: 0, left: 0 }}></canvas>
@@ -332,13 +345,13 @@ export default function Services() {
                   <div className="sv2-front-body">
                     <p className="sv2-cat">Operations</p>
                     <h3 className="sv2-title">Operator<br />Overload</h3>
-                    <p className="sv2-desc">One person doing the job of five — calls, messages, scheduling and admin at once.</p>
+                    <p className="sv2-desc">One person doing the job of five: calls, messages, scheduling and admin at once.</p>
                   </div>
                 </div>
                 <div className="sv2-back">
                   <p className="sv2-back-label">&#x2713; Fixed with Six% Auto</p>
                   <h3 className="sv2-back-title">Your AI-Powered<br />Front Desk</h3>
-                  <p className="sv2-back-desc">A 24/7 AI layer that handles the volume — so your team focuses on work that actually matters.</p>
+                  <p className="sv2-back-desc">A 24/7 AI layer that handles the volume so your team focuses on work that actually matters.</p>
                   <div className="sv2-items">
                     <div className="sv2-item">24/7 AI voice agent answers calls</div>
                     <div className="sv2-item">Messages routed and replied automatically</div>
@@ -350,7 +363,7 @@ export default function Services() {
             </div>
 
             {/* 03 */}
-            <div className="sv2-card" onClick={openModal} onKeyDown={(e) => e.key === 'Enter' && openModal()} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
+            <div className={`sv2-card${flippedCards.has(2) ? ' sv2-flipped' : ''}`} onClick={() => handleCardClick(2)} onKeyDown={(e) => e.key === 'Enter' && handleCardClick(2)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
               <div className="sv2-flipper">
                 <div className="sv2-front">
                   <canvas ref={cv3Ref} id="sv2-cv3" style={{ position: 'absolute', top: 0, left: 0 }}></canvas>
@@ -365,7 +378,7 @@ export default function Services() {
                 <div className="sv2-back">
                   <p className="sv2-back-label">&#x2713; Fixed with Six% Auto</p>
                   <h3 className="sv2-back-title">Full Visibility,<br />Real Time</h3>
-                  <p className="sv2-back-desc">Know exactly where every lead, client and dollar stands — always, without lifting a finger.</p>
+                  <p className="sv2-back-desc">Know exactly where every lead, client and dollar stands, always, without lifting a finger.</p>
                   <div className="sv2-items">
                     <div className="sv2-item">CRM built and populated automatically</div>
                     <div className="sv2-item">Lead tracking from first touch to close</div>
@@ -377,7 +390,7 @@ export default function Services() {
             </div>
 
             {/* 04 */}
-            <div className="sv2-card" onClick={openModal} onKeyDown={(e) => e.key === 'Enter' && openModal()} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
+            <div className={`sv2-card${flippedCards.has(3) ? ' sv2-flipped' : ''}`} onClick={() => handleCardClick(3)} onKeyDown={(e) => e.key === 'Enter' && handleCardClick(3)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
               <div className="sv2-flipper">
                 <div className="sv2-front">
                   <canvas ref={cv4Ref} id="sv2-cv4" style={{ position: 'absolute', top: 0, left: 0 }}></canvas>
@@ -392,7 +405,7 @@ export default function Services() {
                 <div className="sv2-back">
                   <p className="sv2-back-label">&#x2713; Fixed with Six% Auto</p>
                   <h3 className="sv2-back-title">Every Client<br />Comes Back</h3>
-                  <p className="sv2-back-desc">Automated follow-ups that feel personal — sent at the right time, every time.</p>
+                  <p className="sv2-back-desc">Automated follow-ups that feel personal, sent at the right time, every time.</p>
                   <div className="sv2-items">
                     <div className="sv2-item">Post-visit follow-up sent automatically</div>
                     <div className="sv2-item">Review requests timed perfectly</div>
@@ -404,7 +417,7 @@ export default function Services() {
             </div>
 
             {/* 05 full width */}
-            <div className="sv2-card sv2-full" onClick={openModal} onKeyDown={(e) => e.key === 'Enter' && openModal()} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
+            <div className={`sv2-card sv2-full${flippedCards.has(4) ? ' sv2-flipped' : ''}`} onClick={() => handleCardClick(4)} onKeyDown={(e) => e.key === 'Enter' && handleCardClick(4)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
               <div className="sv2-flipper">
                 <div className="sv2-front">
                   <canvas ref={cv5Ref} id="sv2-cv5" style={{ position: 'absolute', top: 0, left: 0 }}></canvas>
@@ -425,7 +438,7 @@ export default function Services() {
                 <div className="sv2-back">
                   <p className="sv2-back-label">&#x2713; Fixed with Six% Auto</p>
                   <h3 className="sv2-back-title">One System,<br />Everything in Sync</h3>
-                  <p className="sv2-back-desc">EHR, inventory, leads and files — all connected, searchable and up to date. No more hunting across apps.</p>
+                  <p className="sv2-back-desc">EHR, inventory, leads and files, all connected, searchable and up to date. No more hunting across apps.</p>
                   <div className="sv2-items sv2-items-row">
                     <div className="sv2-item">EHR fully integrated</div>
                     <div className="sv2-item">Inventory tracked live</div>
@@ -456,7 +469,7 @@ export default function Services() {
           <button onClick={closeModal} aria-label="Close modal" style={{ position: 'absolute', top: '16px', right: '20px', background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', fontSize: '22px', cursor: 'pointer', lineHeight: 1 }}>&times;</button>
           <p style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,34,0,0.8)', margin: '0 0 16px' }}>Six% Auto</p>
           <h3 style={{ fontSize: '28px', fontWeight: 900, color: '#fff', margin: '0 0 12px', letterSpacing: '-0.03em', lineHeight: 1.15 }}>Let&apos;s build your system.</h3>
-          <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: '0 0 32px' }}>We&apos;ll map your friction, design your automation layer, and run it for you — from day one.</p>
+          <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: '0 0 32px' }}>We&apos;ll map your friction, design your automation layer, and run it for you, from day one.</p>
           <a
             href="#contact"
             onClick={closeModal}
@@ -506,6 +519,7 @@ export default function Services() {
           border-radius: 28px;
         }
         .sv2-card:hover .sv2-flipper { transform: rotateY(180deg); }
+        .sv2-card.sv2-flipped .sv2-flipper { transform: rotateY(180deg); }
         .sv2-front, .sv2-back {
           position: absolute; inset: 0;
           border-radius: 28px;

@@ -9,23 +9,17 @@ export default function Footer() {
           <p className="footer-tagline">Automation for execution, not speculation.</p>
         </div>
         <div className="footer-links">
-          <h5>Platform</h5>
-          <a href="#">Home</a>
-          <a href="#new-services">Services</a>
-          <a href="#where-we-come-in">Capabilities</a>
-        </div>
-        <div className="footer-links">
-          <h5>Connect</h5>
+          <h5>Navigate</h5>
+          <a href="#where-we-come-in">How It Works</a>
+          <a href="#services-v2">Services</a>
+          <a href="#manual-tax">Calculator</a>
           <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          <a href="#">LinkedIn</a>
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© 2025 Six% Auto. All rights reserved.</span>
+        <span>© 2026 Six% Auto. All rights reserved.</span>
         <div>
-          <a href="#" style={{ marginRight: '20px' }}>Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="/privacy" style={{ marginRight: '20px' }}>Privacy Policy</a>
         </div>
       </div>
     </footer>

@@ -18,23 +18,18 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install dependencies
-        run: npm install
-        working-directory: app
-
-      - name: Build
-        run: npm run build
-        working-directory: app
-
-      - name: Debug - list app directory
-        if: always()
+      - name: Install and Build
         run: |
-          echo "=== workspace root ==="
+          cd app
+          echo "--- Installing dependencies ---"
+          npm install
+          echo "--- Running build ---"
+          npm run build
+          echo "--- Build exit code: $? ---"
+          echo "--- Listing app directory ---"
           ls -la
-          echo "=== app/ contents ==="
-          ls -la app/
-          echo "=== app/out/ contents (if exists) ==="
-          ls -la app/out/ || echo "out/ not found"
+          echo "--- Checking out/ ---"
+          ls -la out/ || echo "NO OUT DIRECTORY FOUND"
 
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4

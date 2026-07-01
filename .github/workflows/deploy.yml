@@ -19,12 +19,15 @@ jobs:
           node-version: 24
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         working-directory: app
 
       - name: Build
         run: npm run build
         working-directory: app
+
+      - name: List output
+        run: ls -la app/out/ || echo "out/ not found"
 
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
